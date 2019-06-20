@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "ponzi"
+version = "0.1.0"
+description = ""
+authors = ["Lyra Naeseth <lyra@naeseth.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+spectra = "^0.0.11"
+typing-extensions = "^3.7"
+
+[tool.poetry.dev-dependencies]
+pytest = "^3.0"
+mypy = "^0.710.0"
+pyls-mypy = "^0.1.6"
+pyls-isort = "^0.1.1"
+python-language-server = "^0.26.1"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
