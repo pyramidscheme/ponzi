@@ -32,6 +32,8 @@ class Color(NamedTuple):
     def from_hex(cls, h: str) -> "Color":
         if h.startswith("#"):
             h = h[1:]
+        if len(h) == 6:
+            h += "00"
         return Color(*tuple(int(h[i : i + 2], 16) / 255 for i in range(0, 8, 2)))
 
     @classmethod
@@ -105,7 +107,9 @@ class Color(NamedTuple):
         return self.hcl.h
 
 
-def color(chroma: Union[RGB, Lab, HCL], white: float = 0.0) -> Color:
+def color(chroma: Union[str, RGB, Lab, HCL], white: float = 0.0) -> Color:
+    if isinstance(chroma, str):
+        return Color.from_hex(chroma)
     if isinstance(chroma, HCL):
         return Color.from_hcl(chroma, white)
     elif isinstance(chroma, Lab):
