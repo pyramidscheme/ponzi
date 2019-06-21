@@ -2,6 +2,7 @@ from typing import NamedTuple
 
 from pytest import approx
 
+from ponzi.color.color import color
 from ponzi.color.space import (
     RGB,
     Lab,
@@ -203,6 +204,68 @@ def test_hcl():
         assert actual.r == approx(c.rgb.r, 0.0001, 0.0001)
         assert actual.g == approx(c.rgb.g, 0.0001, 0.0001)
         assert actual.b == approx(c.rgb.b, 0.0001, 0.0001)
+
+
+def test_blend():
+    assert color("#2E4057").blend(color("#048BA8"), 0.1).hex == "#2F476000"
+    assert color("#2E4057").blend(color("#048BA8"), 0.2).hex == "#2F4E6900"
+    assert color("#2E4057").blend(color("#048BA8"), 0.3).hex == "#2F557100"
+    assert color("#2E4057").blend(color("#048BA8"), 0.4).hex == "#2E5C7A00"
+    assert color("#2E4057").blend(color("#048BA8"), 0.5).hex == "#2B648200"
+    assert color("#2E4057").blend(color("#048BA8"), 0.6).hex == "#286B8A00"
+    assert color("#2E4057").blend(color("#048BA8"), 0.7).hex == "#23739200"
+    assert color("#2E4057").blend(color("#048BA8"), 0.8).hex == "#1D7B9A00"
+    assert color("#2E4057").blend(color("#048BA8"), 0.9).hex == "#1483A100"
+
+    assert color("#E1DEE9").blend(color("#B6A6CA"), 0.1).hex == "#DCD8E600"
+    assert color("#E1DEE9").blend(color("#B6A6CA"), 0.2).hex == "#D8D3E300"
+    assert color("#E1DEE9").blend(color("#B6A6CA"), 0.3).hex == "#D3CDE000"
+    assert color("#E1DEE9").blend(color("#B6A6CA"), 0.4).hex == "#CFC8DD00"
+    assert color("#E1DEE9").blend(color("#B6A6CA"), 0.5).hex == "#CBC2DA00"
+    assert color("#E1DEE9").blend(color("#B6A6CA"), 0.6).hex == "#C6BCD700"
+    assert color("#E1DEE9").blend(color("#B6A6CA"), 0.7).hex == "#C2B7D400"
+    assert color("#E1DEE9").blend(color("#B6A6CA"), 0.8).hex == "#BEB1D000"
+    assert color("#E1DEE9").blend(color("#B6A6CA"), 0.9).hex == "#BAACCD00"
+
+    assert color("#DD403A").blend(color("#B8B42D"), 0.1).hex == "#DE4E3200"
+    assert color("#DD403A").blend(color("#B8B42D"), 0.2).hex == "#DD5B2A00"
+    assert color("#DD403A").blend(color("#B8B42D"), 0.3).hex == "#DB682300"
+    assert color("#DD403A").blend(color("#B8B42D"), 0.4).hex == "#D9741C00"
+    assert color("#DD403A").blend(color("#B8B42D"), 0.5).hex == "#D5801600"
+    assert color("#DD403A").blend(color("#B8B42D"), 0.6).hex == "#D18B1200"
+    assert color("#DD403A").blend(color("#B8B42D"), 0.7).hex == "#CC961300"
+    assert color("#DD403A").blend(color("#B8B42D"), 0.8).hex == "#C6A01900"
+    assert color("#DD403A").blend(color("#B8B42D"), 0.9).hex == "#BFAA2200"
+
+    assert color("#3D348B").blend(color("#E6AF2E"), 0.1).hex == "#6A328B00"
+    assert color("#3D348B").blend(color("#E6AF2E"), 0.2).hex == "#8E2F8700"
+    assert color("#3D348B").blend(color("#E6AF2E"), 0.3).hex == "#AC2F7F00"
+    assert color("#3D348B").blend(color("#E6AF2E"), 0.4).hex == "#C5347300"
+    assert color("#3D348B").blend(color("#E6AF2E"), 0.5).hex == "#D8416600"
+    assert color("#3D348B").blend(color("#E6AF2E"), 0.6).hex == "#E6535800"
+    assert color("#3D348B").blend(color("#E6AF2E"), 0.7).hex == "#EE694A00"
+    assert color("#3D348B").blend(color("#E6AF2E"), 0.8).hex == "#F0803D00"
+    assert color("#3D348B").blend(color("#E6AF2E"), 0.9).hex == "#EE973200"
+
+    assert color("#191716").blend(color("#E6AF2E"), 0.1).hex == "#2E221C00"
+    assert color("#191716").blend(color("#E6AF2E"), 0.2).hex == "#432F2100"
+    assert color("#191716").blend(color("#E6AF2E"), 0.3).hex == "#593C2500"
+    assert color("#191716").blend(color("#E6AF2E"), 0.4).hex == "#6E4A2800"
+    assert color("#191716").blend(color("#E6AF2E"), 0.5).hex == "#83582B00"
+    assert color("#191716").blend(color("#E6AF2E"), 0.6).hex == "#98682D00"
+    assert color("#191716").blend(color("#E6AF2E"), 0.7).hex == "#AC782F00"
+    assert color("#191716").blend(color("#E6AF2E"), 0.8).hex == "#C08A2F00"
+    assert color("#191716").blend(color("#E6AF2E"), 0.9).hex == "#D49C2F00"
+
+    assert color("#BFEDC1").blend(color("#B6C9BB"), 0.1).hex == "#BEE9C100"
+    assert color("#BFEDC1").blend(color("#B6C9BB"), 0.2).hex == "#BDE6C000"
+    assert color("#BFEDC1").blend(color("#B6C9BB"), 0.3).hex == "#BBE2C000"
+    assert color("#BFEDC1").blend(color("#B6C9BB"), 0.4).hex == "#BADFC000"
+    assert color("#BFEDC1").blend(color("#B6C9BB"), 0.5).hex == "#B9DBBF00"
+    assert color("#BFEDC1").blend(color("#B6C9BB"), 0.6).hex == "#B9D8BE00"
+    assert color("#BFEDC1").blend(color("#B6C9BB"), 0.7).hex == "#B8D4BE00"
+    assert color("#BFEDC1").blend(color("#B6C9BB"), 0.8).hex == "#B7D0BD00"
+    assert color("#BFEDC1").blend(color("#B6C9BB"), 0.9).hex == "#B7CDBC00"
 
 
 def test_linearize():
