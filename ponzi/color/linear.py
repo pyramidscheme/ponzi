@@ -55,6 +55,7 @@ def delinearize_fast(v: float) -> float:
         v2 = v1 * v1
         v3 = v2 * v1
         v4 = v2 * v2
+        v5 = v3 * v2
         return (
             0.0519565234928877
             + 5.09316778537561 * v
